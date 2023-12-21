@@ -13,5 +13,6 @@ SECRET_VALUE=$(op item get "$OP_ITEM" --vault "$OP_VAULT")
 # Create or update the GitHub repository secret using the gh command
 gh secret set "$GH_SECRET_NAME" -r "$GH_REPO" -b "$SECRET_VALUE"
 
-echo "GitHub secret '$GH_SECRET_NAME' has been updated."
+echo "{"GitHub secret '$GH_SECRET_NAME' has been updated."}"
+
 
