@@ -2,6 +2,19 @@
 #   Fetch the Secret from 1password
 #---------------------------------------------
 
+terraform {
+  required_providers {
+    onepassword = {
+      source  = "1password/onepassword"
+      version = "~> 1.3.0"
+    }
+    github = {
+      source  = "integrations/github"
+      version = "~> 5.0"
+    }
+  }
+}
+
 
 data "onepassword_item" "item" {
   vault = var.vault_id
