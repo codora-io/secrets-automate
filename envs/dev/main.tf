@@ -18,7 +18,6 @@ provider "onepassword" {
 provider "github" {
   token = var.gh_token
 }
-
 module "fetch_secret" {
   source            = "../../modules/secret_fetch"
   vault_id          = var.vault_id
