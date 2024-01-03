@@ -21,6 +21,14 @@ data "onepassword_item" "item" {
   uuid  = var.uuid_id
 }
 
+# Dummy resource to trigger updates when 1Password data changes
+resource "null_resource" "trigger" {
+  triggers = {
+    note_value_changes = data.onepassword_item.item.note_value
+  }
+}
+
+
 locals {
   parsed_secrets = { for entry in regexall("\"(\\w+)\"= \"(\\w+)\"", data.onepassword_item.item.note_value) : entry[0] => entry[1] }
 }
