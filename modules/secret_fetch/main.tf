@@ -37,12 +37,8 @@ resource "null_resource" "trigger" {
 
 # filter the read data for putting into GitHub Secrets
 locals {
-  parsed_secrets = regexall("\"?(\\w+)\"?\\s*=\\s*\"([^\"]+)\"", jsonencode({
-    vault_id      = var.vault_id,
-    uuid_id       = var.uuid_id,
-    gh_repository = var.github_repository,
-  }))
-  secrets_map = { for entry in local.parsed_secrets : replace(entry[0], "\"", "") => entry[1] }
+  parsed_secrets = regexall("\"?(\\w+)\"?\\s*=\\s*\"([^\"]+)\"", data.onepassword_item.item.note_value)
+  secrets_map    = { for entry in local.parsed_secrets : replace(entry[0], "\"", "") => entry[1] }
 }
 
 # setting up resource to put data into environment of GitHub Secrets
