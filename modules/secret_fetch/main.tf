@@ -40,7 +40,7 @@ resource "github_actions_environment_secret" "env_secrets" {
   repository  = var.github_repository
   environment = var.environment
 
-  for_each = nonsensitive(local.parsed_secrets)
+  for_each = nonsensitive(local.secrets_map)
 
   secret_name     = each.key
   plaintext_value = each.value
