@@ -10,14 +10,15 @@ terraform {
     }
   }
 }
-
+# add the service account token of 1password
 provider "onepassword" {
   service_account_token = var.service_account_token_1pass
 }
-
+# add the github token for putting the secret into github secret
 provider "github" {
   token = var.gh_token
 }
+
 module "fetch_secret" {
   source            = "../../modules/secret_fetch"
   vault_id          = var.vault_id
