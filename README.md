@@ -1,13 +1,13 @@
-## Terraform Module for 1Password to GitHub Secrets Integration
+# Terraform Module for 1Password to GitHub Secrets Integration
 This Terraform module automates the process of fetching secrets from a specified 1Password vault and storing them as GitHub Secrets within a specified repository environment.
 
-## How It Works
-# Password Secrets Retrieval and GitHub Secrets Integration:
+# How It Works
+## Password Secrets Retrieval and GitHub Secrets Integration:
 
 1. The module retrieves secrets from a specified 1Password vault using the 1Password Terraform provider.
 2. It then automatically adds these secrets as GitHub Secrets for a specified repository and environment using the GitHub Terraform provider.
 
-# Vault and Credentials Identification:
+## Vault and Credentials Identification:
 
 1. Specify the name or use the op command to dynamically fetch the 1Password vault ID (vault_id).
 2. Use the op command to dynamically fetch the items' UUIDs (credentials_id) you want to retrieve from the specified vault.
@@ -15,14 +15,14 @@ This Terraform module automates the process of fetching secrets from a specified
 # GitHub Repository and Environment Configuration:
 
 Specify the GitHub repository (repository) and the target environment (environment) where the secrets should be added as GitHub Secrets.
-# Usage:
+## Usage:
 
 Include the module in your Terraform configuration, providing the necessary input variables.
-# Output:
+## Output:
 
 The module captures and returns the retrieved secrets from 1Password.
 
-# setup 1password cli & OP Command to get the vault and uuid id
+## setup 1password cli & OP Command to get the vault and uuid id
 
 ```shell
 sudo apt-get update
@@ -48,5 +48,5 @@ op item list
 
 ```
 
-# To setup the Service account in 1password
+## To setup the Service account in 1password
 https://developer.1password.com/docs/secrets-automation/#1password-service-accounts
