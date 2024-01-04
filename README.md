@@ -1,36 +1,52 @@
-## GitHub Actions 1Password Secret Updater
-This Bash script is designed to facilitate the synchronization of secrets between 1Password and GitHub Actions. It fetches the latest values from a specified 1Password item and updates the corresponding GitHub secrets in a specified repository and environment. The script ensures that GitHub secrets are always in sync with the latest data from 1Password.
+## Terraform Module for 1Password to GitHub Secrets Integration
+This Terraform module automates the process of fetching secrets from a specified 1Password vault and storing them as GitHub Secrets within a specified repository environment.
 
-Usage
-## Prerequisites
-1Password CLI
-GitHub CLI (gh)
-Configuration
-Set the 1Password item details (OP_VAULT and OP_ITEM).
-Configure your GitHub repository and environment name (github_repo and github_environment).
-# Running the Script
+## How It Works
+# Password Secrets Retrieval and GitHub Secrets Integration:
 
-bash get_1password_secret.sh.sh
+1. The module retrieves secrets from a specified 1Password vault using the 1Password Terraform provider.
+2. It then automatically adds these secrets as GitHub Secrets for a specified repository and environment using the GitHub Terraform provider.
 
-## Script Flow
-1. Fetch latest values from 1Password item.
-2. Extract key-value pairs from the 1Password data.
-3. Fetch current GitHub secrets for the specified repository and environment.
-4. Identify GitHub secrets to delete that are not present in 1Password.
-5. Delete GitHub secrets that are not present in 1Password.
-6. Update or add GitHub secrets with values from 1Password.
+# Vault and Credentials Identification:
 
-# Script Details
-1Password Item Details
+1. Specify the name or use the op command to dynamically fetch the 1Password vault ID (vault_id).
+2. Use the op command to dynamically fetch the items' UUIDs (credentials_id) you want to retrieve from the specified vault.
 
-OP_VAULT: The 1Password vault where the item is stored.
-OP_ITEM: The name of the 1Password item.
-GitHub Configuration
+# GitHub Repository and Environment Configuration:
 
-github_repo: Your GitHub repository in the format owner/repo.
-github_environment: The GitHub Actions environment.
+Specify the GitHub repository (repository) and the target environment (environment) where the secrets should be added as GitHub Secrets.
+# Usage:
 
-## Important Notes
-Ensure that the required CLI tools (1Password CLI and GitHub CLI) are installed and configured.
-The script assumes a certain structure in the 1Password item's notesPlain field. Adjust the parsing logic if your data structure differs.
-Feel free to modify the script to fit your specific use case.
+Include the module in your Terraform configuration, providing the necessary input variables.
+# Output:
+
+The module captures and returns the retrieved secrets from 1Password.
+
+# setup 1password cli & OP Command to get the vault and uuid id
+
+```shell
+sudo apt-get update
+sudo apt-get install -y unzip
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
+sudo tee /etc/apt/sources.list.d/1password.list
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+sudo apt update && sudo apt install 1password-cli
+op --version
+
+
+# to get the id of vault
+op vault list
+# for item uuid
+op item list
+
+```
+
+# To setup the Service account in 1password
+https://developer.1password.com/docs/secrets-automation/#1password-service-accounts
