@@ -28,10 +28,13 @@ resource "null_resource" "trigger" {
   }
 }
 
-
 locals {
-  parsed_secrets = { for entry in regexall("\"(\\w+)\"= \"(\\w+)\"", data.onepassword_item.item.note_value) : entry[0] => entry[1] }
+  parsed_secrets = regexall("\"?(\\w+)\"?\\s*=\\s*\"([^\"]+)\"", data.onepassword_item.item.note_value)
+
+  # Remove double quotes from the keys
+  secrets_map = { for entry in local.parsed_secrets : replace(entry[0], "\"", "") => entry[1] }
 }
+
 
 resource "github_actions_environment_secret" "env_secrets" {
   repository  = var.github_repository
