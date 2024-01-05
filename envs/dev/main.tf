@@ -19,6 +19,15 @@ provider "github" {
   token = var.gh_token
 }
 
+terraform {
+  backend "s3" {
+    bucket = "onepass-terraform-state"
+    region = "ap-northeast-2"
+    key    = "terraform.tfstate"
+
+  }
+}
+
 module "fetch_secret" {
   source            = "../../modules/secret_fetch"
   vault_id          = var.vault_id
