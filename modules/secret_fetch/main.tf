@@ -34,6 +34,10 @@ locals {
   secrets_map    = { for entry in local.parsed_secrets : replace(entry[0], "\"", "") => entry[1] }
 }
 
+output "all_values" {
+  value     = local.secrets_map
+  sensitive = true
+}
 
 #setting up resource to put data into environment of github secret
 resource "github_actions_environment_secret" "env_secrets" {
