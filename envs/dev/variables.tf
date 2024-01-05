@@ -6,3 +6,6 @@ variable "gh_repository" {}
 variable "environment" {
   default = "dev"
 }
+variable "region" {
+  default = "ap-northeast-2"
+}

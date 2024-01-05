@@ -10,6 +10,12 @@ terraform {
     }
   }
 }
+
+# # Provider
+# provider "aws" {
+#   region  = var.region
+#   profile = "1password-terraform"
+# }
 # add the service account token of 1password
 provider "onepassword" {
   service_account_token = var.service_account_token_1pass
@@ -21,9 +27,10 @@ provider "github" {
 
 terraform {
   backend "s3" {
-    bucket = "onepass-terraform-state"
-    region = "ap-northeast-2"
-    key    = "terraform.tfstate"
+    bucket  = "onepass-terraform-state"
+    region  = "ap-northeast-2"
+    key     = "terraform.tfstate"
+    profile = "1password-terraform"
 
   }
 }
