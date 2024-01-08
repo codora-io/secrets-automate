@@ -1,15 +1,15 @@
-terraform {
-  required_providers {
-    onepassword = {
-      source  = "1password/onepassword"
-      version = "~> 1.3.0"
-    }
-    github = {
-      source  = "integrations/github"
-      version = "~> 5.0"
-    }
-  }
-}
+# terraform {
+#   required_providers {
+#     onepassword = {
+#       source  = "1password/onepassword"
+#       version = "~> 1.3.0"
+#     }
+#     github = {
+#       source  = "integrations/github"
+#       version = "~> 5.0"
+#     }
+#   }
+# }
 
 # add the service account token of 1password
 provider "onepassword" {
