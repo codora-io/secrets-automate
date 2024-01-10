@@ -4,7 +4,7 @@ variable "vault_id" {}
 variable "uuid_id" {}
 variable "gh_repository" {}
 variable "environment" {
-  default = "dev"
+  default = "lexim-dev"
 }
 variable "region" {
   default = "ap-northeast-2"

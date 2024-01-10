@@ -1,5 +1,10 @@
 terraform {
   required_providers {
+
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0.0, < 5.0.0"
+    }
     onepassword = {
       source  = "1password/onepassword"
       version = "~> 1.3.0"
@@ -10,6 +15,12 @@ terraform {
     }
   }
 }
+provider "aws" {
+
+
+  region  = var.region
+  profile = "1password-terraform"
+}
 
 # add the service account token of 1password
 provider "onepassword" {
@@ -18,22 +29,4 @@ provider "onepassword" {
 # add the github token for putting the secret into github secret
 provider "github" {
   token = var.gh_token
-}
-
-# terraform {
-#   backend "s3" {
-#     bucket  = "onepass-terraform-state"
-#     region  = "ap-northeast-2"
-#     key     = "terraform.tfstate"
-#     profile = "1password-terraform"
-
-#   }
-# }
-
-module "fetch_secret" {
-  source            = "../../modules/secret_fetch"
-  vault_id          = var.vault_id
-  uuid_id           = var.uuid_id
-  github_repository = var.gh_repository
-  environment       = var.environment
 }
