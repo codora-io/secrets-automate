@@ -28,6 +28,6 @@ provider "onepassword" {
 }
 # add the github token for putting the secret into github secret
 provider "github" {
-  token = var.github_token
+  token = var.gh_token
 }
 
