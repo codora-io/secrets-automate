@@ -5,3 +5,4 @@ module "fetch_secret" {
   github_repository = var.gh_repository
   environment       = var.environment
 }
+

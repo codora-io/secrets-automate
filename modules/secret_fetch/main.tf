@@ -49,3 +49,4 @@ resource "github_actions_environment_secret" "env_secrets" {
   secret_name     = each.key
   plaintext_value = each.value
 }
+
