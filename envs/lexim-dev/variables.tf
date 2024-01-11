@@ -1,5 +1,5 @@
 variable "service_account_token_1pass" {}
-variable "gh_token" {}
+variable "github_token" {}
 variable "vault_id" {}
 variable "uuid_id" {}
 variable "gh_repository" {}
