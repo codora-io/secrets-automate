@@ -26,8 +26,6 @@ provider "aws" {
 provider "onepassword" {
   service_account_token = var.service_account_token_1pass
 }
-# # add the github token for putting the secret into github secret
-# provider "github" {
-#   token = var.gh_token
-# }
-
+provider "github" {
+  token = github.token
+}
