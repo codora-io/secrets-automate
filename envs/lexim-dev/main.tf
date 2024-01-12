@@ -25,5 +25,5 @@ provider "onepassword" {
   service_account_token = var.service_account_token_1pass
 }
 provider "github" {
-  # token = var.github_token
+  token = var.github_token
 }

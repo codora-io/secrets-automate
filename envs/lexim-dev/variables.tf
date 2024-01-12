@@ -12,3 +12,6 @@ variable "github_repository" {
   type        = string
   default     = "codora-io/lexim-aws-infra"
 }
+variable "github_token" {
+
+}
