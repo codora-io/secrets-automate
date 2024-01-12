@@ -7,4 +7,4 @@ variable "environment" {
 variable "region" {
   default = "ap-northeast-2"
 }
-variable "github_token" {}
+# variable "github_token" {}
