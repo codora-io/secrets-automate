@@ -50,3 +50,19 @@ op item list
 
 ## To setup the Service account in 1password
 https://developer.1password.com/docs/secrets-automation/#1password-service-accounts
+
+Commands
+Terraform Plan, Validate, Apply
+# Use Prefix AWS_PROFILE=terraform-development if facing profile issues.
+terraform init
+terraform fmt --check --recursive -diff
+terraform validate
+terraform plan
+terraform destroy
+Terraform States List, Destroy
+terraform state list
+terraform destroy -target=RESOURCE_TYPE.NAME
+Terraform Lock States
+terraform force-unlock -force <lock-id>
+# OR 
+ps aux | grep terraform & sudo kill -9 <process_id>
