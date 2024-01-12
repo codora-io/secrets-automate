@@ -41,8 +41,7 @@ output "all_values" {
 
 #setting up resource to put data into environment of github secret
 resource "github_actions_environment_secret" "env_secrets" {
-  repository = format("%s/%s", split("/", var.github_repository)[0], split("/", var.github_repository)[1])
-
+  repository  = var.github_repository
   environment = var.environment
 
   for_each = nonsensitive(local.secrets_map)
