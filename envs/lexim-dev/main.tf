@@ -20,3 +20,6 @@ provider "aws" {
 provider "onepassword" {
   service_account_token = var.service_account_token_1pass
 }
+provider "github" {
+  token = env.GITHUB_TOKEN
+}
