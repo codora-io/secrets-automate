@@ -1,5 +1,5 @@
 # resource "aws_s3_bucket" "terraform-state" {
-#   bucket = "1pass-lexim-dev-terraform-state"
+#   bucket = "1pass-lexim-terraform-state"
 # }
 
 # resource "aws_s3_bucket_server_side_encryption_configuration" "terraform-state" {
@@ -46,7 +46,7 @@
 # }
 
 # resource "aws_dynamodb_table" "terraform-state" {
-#   name           = "1pass-lexim-dev-terraform-state-db"
+#   name           = "1pass-lexim-terraform-state-db"
 #   read_capacity  = 20
 #   write_capacity = 20
 #   hash_key       = "LockID"
@@ -59,11 +59,11 @@
 
 terraform {
   backend "s3" {
-    bucket         = "1pass-lexim-dev-terraform-state"
+    bucket         = "1pass-lexim-terraform-state"
     key            = "state/terraform.tfstate"
     region         = "ap-northeast-2"
     encrypt        = true
-    dynamodb_table = "1pass-lexim-dev-terraform-state-db"
+    dynamodb_table = "1pass-lexim-terraform-state-db"
     profile        = "1password-terraform"
   }
 }
