@@ -5,7 +5,3 @@ module "fetch_secret" {
   github_repository = var.github_repository
   environment       = var.environment
 }
-
-output "github_repository" {
-  value = var.github_repository
-}
