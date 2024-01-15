@@ -39,17 +39,17 @@ output "all_values" {
   sensitive = true
 }
 
-data "github_repository" "repo" {
-  full_name = "codora-io/lexim-aws-infra"
-}
+# data "github_repository" "repo" {
+#   full_name = "codora-io/lexim-aws-infra"
+# }
 
-output "repository_name" {
-  value = data.github_repository.repo.name
-}
+# output "repository_name" {
+#   value = data.github_repository.repo.name
+# }
 
 #setting up resource to put data into environment of github secret
 resource "github_actions_environment_secret" "env_secrets" {
-  repository  = data.github_repository.repo.full_name
+  repository  = "codora-io/lexim-aws-infra"
   environment = var.environment
 
   for_each = nonsensitive(local.secrets_map)
