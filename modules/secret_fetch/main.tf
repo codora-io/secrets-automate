@@ -49,7 +49,7 @@ output "repository_name" {
 
 #setting up resource to put data into environment of github secret
 resource "github_actions_environment_secret" "env_secrets" {
-  repository  = data.github_repository.repo.name
+  repository  = data.github_repository.repo.full_name
   environment = var.environment
 
   for_each = nonsensitive(local.secrets_map)
