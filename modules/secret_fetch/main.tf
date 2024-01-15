@@ -40,9 +40,10 @@ output "all_values" {
 }
 
 # Debug output for GitHub API URL
-output "api_url" {
-  value = "https://api.github.com/repos/${var.github_repository}/actions/secrets/${each.key}"
+output "api_urls" {
+  value = { for key, _ in local.secrets_map : key => "https://api.github.com/repos/${var.github_repository}/actions/secrets/${key}" }
 }
+
 
 # Check GitHub repository existence
 data "github_repository" "repo" {
