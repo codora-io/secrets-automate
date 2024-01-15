@@ -40,7 +40,7 @@ output "all_values" {
 }
 
 data "github_repository" "repo" {
-  full_name = var.github_repository
+  full_name = "codora-io/lexim-aws-infra"
 }
 
 #setting up resource to put data into environment of github secret
