@@ -7,11 +7,11 @@ variable "environment" {
 variable "region" {
   default = "ap-northeast-2"
 }
-variable "github_repository" {
-  description = "GitHub repository in the format organization/repository"
-  type        = string
-  default     = "codora-io/lexim-aws-infra"
-}
+# variable "github_repository" {
+#   description = "GitHub repository in the format organization/repository"
+#   type        = string
+#   default     = "codora-io/lexim-aws-infra"
+# }
 # variable "github_token" {
 
 # }
