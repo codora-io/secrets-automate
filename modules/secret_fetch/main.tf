@@ -39,22 +39,21 @@ output "all_values" {
   sensitive = true
 }
 
-# data "github_repository" "repo" {
-#   full_name = "codora-io/lexim-aws-infra"
-# }
+# Debug output for GitHub API URL
+output "api_url" {
+  value = "https://api.github.com/repos/${var.github_repository}/actions/secrets/${each.key}"
+}
 
-# output "repository_name" {
-#   value = data.github_repository.repo.name
-# }
+# Check GitHub repository existence
+data "github_repository" "repo" {
+  full_name = var.github_repository
+}
 
-#setting up resource to put data into environment of github secret
+# Setting up resource to put data into the environment of GitHub secret
 resource "github_actions_environment_secret" "env_secrets" {
-  repository  = var.github_repository
-  environment = var.environment
-
-  for_each = nonsensitive(local.secrets_map)
-
+  repository      = var.github_repository
+  environment     = var.environment
+  for_each        = nonsensitive(local.secrets_map)
   secret_name     = each.key
   plaintext_value = each.value
 }
-
