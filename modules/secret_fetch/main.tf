@@ -39,9 +39,11 @@ output "all_values" {
   sensitive = true
 }
 
+# data "github_repo"
+
 #setting up resource to put data into environment of github secret
 resource "github_actions_environment_secret" "env_secrets" {
- repository  = replace(var.github_repository, "/", "-")
+  repository  = replace(var.github_repository, "/", "-")
   environment = var.environment
 
   for_each = nonsensitive(local.secrets_map)

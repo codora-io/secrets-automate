@@ -63,6 +63,6 @@ Terraform States List, Destroy
 terraform state list
 terraform destroy -target=RESOURCE_TYPE.NAME
 Terraform Lock States
- terraform force-unlock -force <lock-id>
+terraform force-unlock -force <lock-id>
 # OR 
 ps aux | grep terraform & sudo kill -9 <process_id>
