@@ -39,17 +39,6 @@ output "all_values" {
   sensitive = true
 }
 
-# Debug output for GitHub API URL
-output "api_urls" {
-  value = { for key, _ in local.secrets_map : key => "https://api.github.com/repos/${var.github_repository}/actions/secrets/${key}" }
-}
-
-
-# Check GitHub repository existence
-data "github_repository" "repo" {
-  full_name = var.github_repository
-}
-
 # Setting up resource to put data into the environment of GitHub secret
 resource "github_actions_environment_secret" "env_secrets" {
   repository      = var.github_repository
