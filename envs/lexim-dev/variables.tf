@@ -14,5 +14,6 @@ variable "gh_token" {
 variable "github_repository" {
   description = "GitHub repository in the format organization/repository"
   type        = string
-  default     = "codora-io/lexim-aws-infra"
+  # default     = "codora-io/lexim-aws-infra"
+  default = "nextjs-app-infra"
 }
