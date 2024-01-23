@@ -52,8 +52,8 @@ op item list
 https://developer.1password.com/docs/secrets-automation/#1password-service-accounts
 
 Commands
+```shell
 Terraform Plan, Validate, Apply
-# Use Prefix AWS_PROFILE=terraform-development if facing profile issues.
 terraform init
 terraform fmt --check --recursive -diff
 terraform validate
